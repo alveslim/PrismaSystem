@@ -1,0 +1,6 @@
+data_entrada, data_entrega, cliente, firma, op, referencia, FT/FTD/FE, desenhista, status
+2024-01-15,2024-02-15,Cliente A,Firma X,OP123,Ref001,FT,Desenhista 1,Em andamento
+2024-01-20,2024-02-20,Cliente B,Firma Y,OP124,Ref002,FE,Desenhista 2,Pendente
+2024-01-25,2024-02-25,Cliente C,Firma Z,OP125,Ref003,FTD,Desenhista 3,Concluído
+2024-01-30,2024-02-28,Cliente D,Firma W,OP126,Ref004,FT,Desenhista 4,Em andamento
+2024-02-05,2024-03-05,Cliente E,Firma V,OP127,Ref005,FE,Desenhista 5,Pendente
