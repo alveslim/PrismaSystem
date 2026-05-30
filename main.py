@@ -5,13 +5,13 @@ import csv
 import customtkinter as ctk
 
 # Interface gráfica
-ctk.set_appearance_mode("System")  # Segue o tema do seu PC (Dark ou Light)
+c#tk.set_appearance_mode("System")  # Segue o tema do seu PC (Dark ou Light)
 ctk.set_default_color_theme("blue")  # Tema de cores dos botões/componentes
 window = ctk.CTk()
 window.title("Gerador de CSV")
 window.geometry("400x300")
 
-# Adicionando dados na planilha
+ Adicionando dados na planilha
 text = ctk.CTkLabel(
     window, 
     text="Clique no botão para criar um arquivo CSV"
