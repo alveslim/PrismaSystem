@@ -18,6 +18,7 @@ text = ctk.CTkLabel(
 )
 text.pack(pady=20)
 
+# cria pdf
 def criarpdf():
 
     nome_cliente = firma.get()
