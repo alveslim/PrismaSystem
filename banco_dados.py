@@ -4,13 +4,13 @@ def search_NextOp():
     """Read last number of OP the archive ops.csv and return next id"""
     """L> idea for read own main csv"""
     try:
-        with open("ops.csv", "r", encondig="utf-8") as file:
+        with open("ops.csv", "r", encoding="utf-8") as file: 
             reader = csv.reader(file)
             rows = list(reader)
             
-            if rows and rows[-1]
+            if rows and rows[-1]:
                 last_row = rows[-1]
-                return int(last_row) + 1
+                return int(last_row[0]) + 1
     except (FileNotFoundError, ValueError, IndexError):
         pass 
     return 1 # Return 1 if archivement not exist, if empty or fails
