@@ -58,21 +58,21 @@ def coletar_objeto_op():
         status=status.get()
     )
     
-    def action_save_csv():
-        new_op = coletar_objeto_op()
-        # Sending data dispersed unificate in structured list
-        banco_dados.save_csv(new_op.for_list_csv())
+def action_save_csv():
+    new_op = coletar_objeto_op()
+    # Sending data dispersed unificate in structured list
+    banco_dados.save_csv(new_op.for_list_csv())
         
-    def action_save_pdf():
-        new_op = coletar_objeto_op()
-        # Sending strutured data in format of dictionary
-        banco_dados.save_pdf_fake(new_op.for_dict())
+def action_save_pdf():
+    new_op = coletar_objeto_op()
+    # Sending strutured data in format of dictionary
+    banco_dados.save_pdf_fake(new_op.for_dict())
         
-    # --- BOTÕES ---
-    botao_csv = ctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
-    botao_csv.pack(pady=10)
+# --- BOTÕES ---
+botao_csv = ctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
+botao_csv.pack(pady=10)
     
-    botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_pdf)
-    botao_pdf.pack(pady=5)
+botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_pdf)
+botao_pdf.pack(pady=5)
     
-    window.mainloop()
+window.mainloop()
