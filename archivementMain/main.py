@@ -1,6 +1,6 @@
 import customtkinter as ctk
-import banco_dados
-from modelos import OrdemProducao
+import archivementMain.banco_dados as banco_dados
+from archivementMain.modelos import OrdemProducao
 
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
@@ -27,7 +27,7 @@ firma = ctk.CTkEntry(window, placeholder_text="Firma...", width=250)
 firma.pack(pady=5)
 
 # Campo da OP (Podemos carregar o próximo ID automaticamente se quiser!)
-proxima_op = banco_dados.search_NextOp() ######################################################################################
+proxima_op = banco_dados.search_NextOp() 
 op = ctk.CTkEntry(window, placeholder_text=f"Nº da OP (Sugestão: {proxima_op})...", width=250)
 op.pack(pady=5)
 
@@ -76,3 +76,10 @@ botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_
 botao_pdf.pack(pady=5)
     
 window.mainloop()
+
+"""
+Automatizar:
+op, data de entrada, desenhista, cliente,
+status
+
+"""

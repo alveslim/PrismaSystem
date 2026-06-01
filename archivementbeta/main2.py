@@ -1,5 +1,5 @@
-import criar
-from criar import sendInfo, criarpdf
+import archivementbeta.criar as criar
+from archivementbeta.criar import sendInfo, criarpdf
 import geradorOp 
 from geradorOp import LastRow
 #import tkinter as tk
