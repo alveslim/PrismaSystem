@@ -1,11 +1,11 @@
 import csv
 #import collections import deque
 
-with open("generatorOp.csv", "r", encoding="utf-8") as file:
+with open("op.csv", "r", encoding="utf-8") as file:
     reader = csv.reader(file)
     rows = list(reader)
     #print(rows)
-    
+LastRow = 1
 if rows:
     LastRow = rows[-1]
     LastRow = int(LastRow[0]) + 1
@@ -13,9 +13,9 @@ print(LastRow)
 dados = LastRow
 def save_csv(dados):
     """Receives a list with data and save in data.csv"""
-    with open("generatorOp.csv", "a", encoding="utf-8", newline="") as file:
+    with open("op.csv", "a", encoding="utf-8", newline="") as file:
         writer = csv.writer(file, delimiter=",")
-        writer.writerow(dados)
+        writer.writerow([dados])
         print("Dados salvos com sucesso!")
 save_csv(dados)
             
