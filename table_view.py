@@ -12,7 +12,13 @@ dados_planilha = [
     ["OP", "Concluido", "03/06"],
 ]
 
-    
+def grifar_op(button):
+    button.configure(
+        fg_color="#ff4444",
+        font=ctk.CTkFont(size=13, overstrike=True), 
+        state="disabled"
+    )
+
 # Create a frame with roll (case the table it's big)
 frame_table = ctk.CTkScrollableFrame(root, width=550, height=300)
 frame_table.pack(pady=20, padx=20, fill="both", expand=True)
@@ -20,7 +26,7 @@ frame_table.pack(pady=20, padx=20, fill="both", expand=True)
 for num_row, row in enumerate(dados_planilha):
     for num_column, valuer in enumerate(row):
         if num_row == 0:
-            label = ctk.CTkLabel(
+            componente = ctk.CTkLabel(
                 frame_table,
                 text=valuer,
                 font=ctk.CTkFont(size=14, weight="bold"),
@@ -31,24 +37,21 @@ for num_row, row in enumerate(dados_planilha):
                 height=30
             )
         else:
-            def grifar_op():
-                font=ctk.CTkFont(size=13, overstrike=True),
-                text_color="red"
-                return font, text_color
             
             # Commons rows of data
             # Alternate colors of background for give effect "zebra" (optional)
             backgroundColor = "#2a2a2a" if num_row % 2 == 0 else "#222222"
-            label = ctk.CTkButton(
+            componente = ctk.CTkButton(
                 frame_table, 
                 text=valuer, 
-                font=ctk.CTkFont(size=13),
-                fg_color=backgroundColor,
                 width=150,
                 height=30,
-                command=grifar_op
+                font=ctk.CTkFont(size=13),
+                fg_color=backgroundColor,
+                hover_color="#14375e",
             )
+            componente.configure(command=lambda b=componente: grifar_op(b))
             
-        label.grid(row=num_row, column=num_column, padx=5, pady=2, sticky="nsew")
+        componente.grid(row=num_row, column=num_column, padx=5, pady=2, sticky="nsew")
 
 root.mainloop()

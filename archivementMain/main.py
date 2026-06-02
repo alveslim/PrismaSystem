@@ -1,6 +1,6 @@
 import customtkinter as ctk
-import archivementMain.banco_dados as banco_dados
-from archivementMain.modelos import OrdemProducao
+import banco_dados as banco_dados
+from modelos import OrdemProducao
 
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
