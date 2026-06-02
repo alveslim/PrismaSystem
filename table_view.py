@@ -1,16 +1,21 @@
 import customtkinter as ctk
+from geradorOp import search_Op
+import pandas as pd
+
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
 root = ctk.CTk()
 root.title("Table View")
 root.geometry("600x400")
 
-dados_planilha = [
-    ["OP", "Status", "Data"],
-    ["101", "Atiuvo", "01/06"],
-    ["OP", "Pendente", "02/06"],
-    ["OP", "Concluido", "03/06"],
-]
+# dados_planilha = [
+#     ["OP", "Status", "Data"],
+#     ["101", "Atiuvo", "01/06"],
+#     ["OP", "Pendente", "02/06"],
+#     ["OP", "Concluido", "03/06"],
+# ]
+dados_planilha = search_Op()
+print(dados_planilha.head())
 
 def grifar_op(button):
     button.configure(

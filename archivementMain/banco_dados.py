@@ -15,6 +15,12 @@ def search_NextOp():
         pass 
     return 1 # Return 1 if archivement not exist, if empty or fails
 
+def search_Op():
+        with open("ops.csv", "r", encoding="utf-8") as file: 
+            reader = csv.reader(file)
+            rows = list(reader)
+            return rows
+
 def save_csv(dados):
     """Receives a list with data and save in data.csv"""
     with open("date.csv", "a", encoding="utf-8", newline="") as file:

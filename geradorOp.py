@@ -19,6 +19,12 @@ def save_csv(dados):
         print("Dados salvos com sucesso!")
 save_csv(dados)
 
+def search_Op():
+        with open("op.csv", "r", encoding="utf-8") as file: 
+            reader = csv.reader(file)
+            rows = list(reader)
+            return rows
+
 ########################################################################################
 def search_NextOp():
     """Read last number of OP the archive ops.csv and return next id"""
