@@ -45,3 +45,6 @@ for num_row, row in enumerate(dados_planilha):
         label.grid(row=num_row, column=num_column, padx=5, pady=2, sticky="nsew")
 
 root.mainloop()
+
+# botao editar do lado da tabela
+# clicar na celular com batalha naval
