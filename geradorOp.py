@@ -24,6 +24,16 @@ def search_Op():
             reader = csv.reader(file)
             rows = list(reader)
             return rows
+        """Modificar na planilha"""
+        """Verificar se foi utilizada para atualizar no Visualizador"""
+        """verificar se todas as ops foram utilizadas"""
+        
+def grifLoad(dados):
+    with open("op.csv", "a", encoding="utf=8") as file:
+        writer = csv.writer(file, delimiter=",")
+        writer.writerow(f"--{[dados]}--")
+        print("Baixa em op com sucesso!")
+grifLoad(dados)
 
 ########################################################################################
 def search_NextOp():

@@ -15,14 +15,14 @@ root.geometry("600x400")
 #     ["OP", "Concluido", "03/06"],
 # ]
 dados_planilha = search_Op()
-print(dados_planilha.head())
+print(dados_planilha)
 
 def grifar_op(button):
-    button.configure(
-        fg_color="#ff4444",
-        font=ctk.CTkFont(size=13, overstrike=True), 
-        state="disabled"
-    )
+        button.configure(
+            fg_color="#ff4444",
+            font=ctk.CTkFont(size=13, overstrike=True), 
+            state="disabled"
+        )
 
 # Create a frame with roll (case the table it's big)
 frame_table = ctk.CTkScrollableFrame(root, width=550, height=300)
@@ -54,6 +54,7 @@ for num_row, row in enumerate(dados_planilha):
                 font=ctk.CTkFont(size=13),
                 fg_color=backgroundColor,
                 hover_color="#14375e",
+                command=grifar_op
             )
             componente.configure(command=lambda b=componente: grifar_op(b))
             
