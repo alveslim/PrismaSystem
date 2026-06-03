@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from geradorOp import search_Op
+from geradorOp import search_Op, grifLoad
 import pandas as pd
 
 ctk.set_appearance_mode("System")
@@ -54,7 +54,7 @@ for num_row, row in enumerate(dados_planilha):
                 font=ctk.CTkFont(size=13),
                 fg_color=backgroundColor,
                 hover_color="#14375e",
-                command=grifar_op
+                command=grifLoad
             )
             componente.configure(command=lambda b=componente: grifar_op(b))
             

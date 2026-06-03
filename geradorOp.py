@@ -28,10 +28,11 @@ def search_Op():
         """Verificar se foi utilizada para atualizar no Visualizador"""
         """verificar se todas as ops foram utilizadas"""
         
-def grifLoad(dados):
+def grifLoad(dado):
     with open("op.csv", "a", encoding="utf=8") as file:
         writer = csv.writer(file, delimiter=",")
-        writer.writerow(f"--{[dados]}--")
+        writer.writerow(f"--{([dado])}--") # <===== dados variavel da Lastrow?? 
+        # L> transformar a em celula, e nao ler variavel por variavel.
         print("Baixa em op com sucesso!")
 grifLoad(dados)
 
