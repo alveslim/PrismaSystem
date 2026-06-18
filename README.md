@@ -25,5 +25,5 @@ Este é um aplicativo desktop desenvolvido em Python utilizando a biblioteca **C
 
 1. **Clone o repositório:**
 ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone [https://github.com/seu-usuario/seu-repositorio.git]](https://github.com/alveslim/PrismaSystem)
    cd seu-repositorio
