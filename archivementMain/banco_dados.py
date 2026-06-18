@@ -1,7 +1,7 @@
 import os
 import subprocess
-import win32print
-import win32api
+#import win32print
+#import win32api
 import os
 import csv 
 
