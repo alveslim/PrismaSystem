@@ -69,7 +69,7 @@ def action_save_pdf():
     banco_dados.save_pdf_fake(new_op.for_dict())
         
 # --- BOTÕES ---
-botao_csv = ctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
+botao_csv = ubuntuctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
 botao_csv.pack(pady=10)
     
 botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_pdf)
