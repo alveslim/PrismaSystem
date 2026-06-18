@@ -1,5 +1,5 @@
 import csv 
-
+import cups
 def search_NextOp():
     """Read last number of OP the archive ops.csv and return next id"""
     """L> idea for read own main csv"""
@@ -20,6 +20,25 @@ def search_Op():
             reader = csv.reader(file)
             rows = list(reader)
             return rows
+        
+def imprimir_no_linux(caminho_arquivo, nome_trabalho="Documento"):
+    # Conecta ao servidor CUPS local
+    conn = cups.Connection()
+    
+    # Pega o nome da impressora padrão do sistema
+    padrao = conn.getDefault()
+    
+    if padrao:
+        # Envia o arquivo para a fila de impressão
+        job_id = conn.printFile(padrao, caminho_arquivo, nome_trabalho, {})
+        print(f"Trabalho {job_id} enviado com sucesso para a impressora: {padrao}")
+    else:
+        print("Nenhuma impressora padrão configurada no sistema.")
+imprimir_no_linux("/home/flavio/Documentos/GitHub/PrismaSystem/archivementMain/data.pdf", "OP_12345.pdf")
+# Exemplo de uso:
+# imprimir_no_linux("/caminho/do/seu/arquivo.pdf")
+
+
 
 def save_csv(dados):
     """Receives a list with data and save in data.csv"""
