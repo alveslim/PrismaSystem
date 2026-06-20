@@ -7,7 +7,7 @@ ctk.set_default_color_theme("blue")
 
 window = ctk.CTk()
 window.title("Gerador de OPs")
-window.geometry("400x650")
+window.geometry("400x700") # Aumentei um pouquinho a altura para caber os botões
 
 # Label Principal
 text = ctk.CTkLabel(window, text="Preencha os dados da OP abaixo:")
@@ -26,7 +26,6 @@ cliente.pack(pady=5)
 firma = ctk.CTkEntry(window, placeholder_text="Firma...", width=250)
 firma.pack(pady=5)
 
-# Campo da OP (Podemos carregar o próximo ID automaticamente se quiser!)
 proxima_op = banco_dados.search_NextOp() 
 op = ctk.CTkEntry(window, placeholder_text=f"Nº da OP (Sugestão: {proxima_op})...", width=250)
 op.pack(pady=5)
@@ -60,35 +59,31 @@ def coletar_objeto_op():
     
 def action_save_csv():
     new_op = coletar_objeto_op()
-    # Sending data dispersed unificate in structured list
     banco_dados.save_csv(new_op.for_list_csv())
         
 def action_save_pdf():
     new_op = coletar_objeto_op()
-    # Sending strutured data in format of dictionary
     banco_dados.save_pdf_fake(new_op.for_dict())
     
-# def action_imprimir():
-#     banco_dados.imprimir_no_windows("data.pdf")
+def action_imprimir():
+    # 1. Coleta os dados da tela
+    new_op = coletar_objeto_op()
+    
+    # 2. Gera o PDF e guarda o nome do arquivo gerado (Ex: 'OP_5.pdf')
+    nome_arquivo_gerado = banco_dados.save_pdf_fake(new_op.for_dict())
+    
+    # 3. Manda o arquivo exato para a impressora do Windows
+    banco_dados.imprimir_no_windows(nome_arquivo_gerado)
         
 # --- BOTÕES ---
-botao_csv = ctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
+botao_csv = ctk.CTkButton(master=window, text="Salvar em CSV", command=action_save_csv)
 botao_csv.pack(pady=10)
     
-botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_pdf)
+botao_pdf = ctk.CTkButton(master=window, text="Apenas Salvar PDF", command=action_save_pdf)
 botao_pdf.pack(pady=5)
 
-# botao_imprimir = ctk.CTkButton(master=window, text="Imprimir PDF", command=action_imprimir)
-# botao_imprimir.pack(pady=5)
-
-# botao_imprimir_linux = ctk.CTkButton(master=window, text="Imprimir PDF no Linux", command=lambda: banco_dados.imprimir_no_linux("data.pdf"))
-# botao_imprimir_linux.pack(pady=5)
+# Botão de impressão agora ativado!
+botao_imprimir = ctk.CTkButton(master=window, text="Salvar e Imprimir (Windows)", command=action_imprimir, fg_color="green", hover_color="darkgreen")
+botao_imprimir.pack(pady=15)
 
 window.mainloop()
-
-"""
-Automatizar:
-op, data de entrada, desenhista, cliente,
-status
-
-"""
