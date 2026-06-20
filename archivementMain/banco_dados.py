@@ -67,7 +67,7 @@ def save_pdf_fake(dados_dict):
         f"Data entrada: {dados_dict.get('data_entrada', '')}",
         f"Data entrega: {dados_dict.get('data_entrega', '')}",
         f"Cliente: {dados_dict.get('cliente', '')}",
-        f"Firma: {dados_dict.get('firma', '')}",
+        f"Firma: d{ados_dict.get('firma', '')}",
         f"Referência: {dados_dict.get('referencia', '')}",
         f"Tipo: {dados_dict.get('ft', '')}",
         f"Desenhista: {dados_dict.get('desenhista', '')}",
