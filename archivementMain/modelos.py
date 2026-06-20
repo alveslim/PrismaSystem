@@ -12,7 +12,7 @@ class OrdemProducao:
         
     def for_list_csv(self):
         """Unify the data in format of list for csv"""
-        return[self.firma, self.op, self.referencia, self.ft, self.desenhista, self.status]
+        return [self.firma, self.op, self.referencia, self.ft, self.desenhista, self.status]
     
     def for_dict(self):
         """Unify the data in dictionary for generator of text/pdf"""
@@ -24,6 +24,6 @@ class OrdemProducao:
             "op": self.op,
             "referencia": self.referencia,
             "ft": self.ft,
-            "desenehista": self.desenhista,
+            "desenhista": self.desenhista,
             "status": self.status
         }

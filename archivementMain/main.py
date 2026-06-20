@@ -67,6 +67,9 @@ def action_save_pdf():
     new_op = coletar_objeto_op()
     # Sending strutured data in format of dictionary
     banco_dados.save_pdf_fake(new_op.for_dict())
+    
+# def action_imprimir():
+#     banco_dados.imprimir_no_windows("data.pdf")
         
 # --- BOTÕES ---
 botao_csv = ctk.CTkButton(master=window, text="Salvar em Csv", command =action_save_csv)
@@ -75,11 +78,11 @@ botao_csv.pack(pady=10)
 botao_pdf = ctk.CTkButton(master=window, text="Salvar PDF", command=action_save_pdf)
 botao_pdf.pack(pady=5)
 
-#botao_imprimir = ctk.CTkButton(master=window, text="Imprimir PDF", command=lambda: banco_dados.imprimir_no_windows("data.pdf"))
-#botao_imprimir.pack(pady=5)
+# botao_imprimir = ctk.CTkButton(master=window, text="Imprimir PDF", command=action_imprimir)
+# botao_imprimir.pack(pady=5)
 
-botao_imprimir_linux = ctk.CTkButton(master=window, text="Imprimir PDF no Linux", command=lambda: banco_dados.imprimir_no_linux("data.pdf"))
-botao_imprimir_linux.pack(pady=5)
+# botao_imprimir_linux = ctk.CTkButton(master=window, text="Imprimir PDF no Linux", command=lambda: banco_dados.imprimir_no_linux("data.pdf"))
+# botao_imprimir_linux.pack(pady=5)
 
 window.mainloop()
 
