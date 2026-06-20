@@ -16,7 +16,7 @@ def checar_ticket():
 
 def confirmar_ticket(ticket_atual):
     try:
-        payload = {"ticket": ticket_ticket_atual}
+        payload = {"ticket": ticket_atual}
         resposta = requests.post(f"{SERVIDOR_URL}/confirmar", json=payload)
         if resposta.status_code == 200:
             print("\n[✓] Ticket confirmado com sucesso no servidor!")
