@@ -1,6 +1,7 @@
 import os
 import csv
 import subprocess
+import sys
 
 """import sys
 
@@ -17,16 +18,31 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
 def listar_impressoras():
+
+    if sys.platform == "win32":
+        """Busca todas as impressoras instaladas no Windows para listar na GUI"""
+        try:
+            import win32print
+            lista = win32print.EnumPrinters(win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS)
+            nomes = [impressora[2] for impressora in lista]
+            if not nomes:
+                return [win32print.GetDefaultPrinter()]
+            return nomes
+        except Exception:
+            return ["Impressora Padrão"]
     """Busca todas as impressoras instaladas no Windows para listar na GUI"""
-    try:
-        import win32print
-        lista = win32print.EnumPrinters(win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS)
-        nomes = [impressora[2] for impressora in lista]
-        if not nomes:
-            return [win32print.GetDefaultPrinter()]
-        return nomes
-    except Exception:
-        return ["Impressora Padrão"]
+
+    if sys.platform != "win32":
+        try:
+            # Usa o comando 'lpstat' para listar impressoras no Linux/Mac
+            resultado = subprocess.run(["lpstat", "-a"], capture_output=True, text=True)
+            linhas = resultado.stdout.splitlines()
+            nomes = [linha.split()[0] for linha in linhas if linha]
+            if not nomes:
+                return ["Impressora Padrão"]
+            return nomes
+        except Exception:
+            return ["Impressora Padrão"]
 
 def search_NextOp():
     """Lê o último número de OP no ops.csv e retorna o próximo ID"""
