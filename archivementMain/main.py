@@ -23,9 +23,16 @@ menu_impressora = ctk.CTkOptionMenu(frame_impressora, values=lista_impressoras, 
 menu_impressora.pack(side="left", padx=10, pady=5)
 
 # Tenta definir a impressora padrão do sistema na caixinha de seleção
+#try:
+#    import win32print
+#    menu_impressora.set(win32print.GetDefaultPrinter())
+#except:
+#    pass
+
+# Tenta definir a impressora padrão do sistema na caixinha de seleção (Linux/Mac)
 try:
-    import win32print
-    menu_impressora.set(win32print.GetDefaultPrinter())
+    import subprocess
+    menu_impressora.set(subprocess.run(["lpstat", "-d"], capture_output=True, text=True).stdout.split()[-1])
 except:
     pass
 

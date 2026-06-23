@@ -1,10 +1,32 @@
 import os
 import csv
 import subprocess
-import win32print
-import win32api
+
+"""import sys
+
+if sys.platform == "win32":
+    import win32print
+else:
+    # Fallback or dummy functions for Linux development
+    win32print = None
+    print("Running on Linux: win32print is disabled.")
+
+
+import win32api"""
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+
+def listar_impressoras():
+    """Busca todas as impressoras instaladas no Windows para listar na GUI"""
+    try:
+        import win32print
+        lista = win32print.EnumPrinters(win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS)
+        nomes = [impressora[2] for impressora in lista]
+        if not nomes:
+            return [win32print.GetDefaultPrinter()]
+        return nomes
+    except Exception:
+        return ["Impressora Padrão"]
 
 def search_NextOp():
     """Lê o último número de OP no ops.csv e retorna o próximo ID"""
@@ -25,12 +47,12 @@ def search_Op():
         reader = csv.reader(file)
         return list(reader)
 
-def imprimir_no_windows(caminho_arquivo):
-    """Envia o arquivo para a impressora padrão do Windows silenciosamente"""
-    print(f"Enviando '{caminho_arquivo}' para a impressora padrão do Windows...")
-    # O comando ShellExecute com "print" abre o leitor de PDF em background e manda imprimir
-    win32api.ShellExecute(0, "print", caminho_arquivo, None, ".", 0)
-    print("Comando de impressão enviado!")
+#def imprimir_no_windows(caminho_arquivo):
+ #   """Envia o arquivo para a impressora padrão do Windows silenciosamente"""
+  #  print(f"Enviando '{caminho_arquivo}' para a impressora padrão do Windows...")
+   # # O comando ShellExecute com "print" abre o leitor de PDF em background e manda imprimir
+    #win32api.ShellExecute(0, "print", caminho_arquivo, None, ".", 0)
+    #print("Comando de impressão enviado!")
 
 def imprimir_no_linux(caminho_arquivo):
     """Envia o arquivo para a impressora padrão no Linux/Mac"""
