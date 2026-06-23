@@ -9,6 +9,30 @@ window = ctk.CTk()
 window.title("Gerador de OPs")
 window.geometry("400x700") # Aumentei um pouquinho a altura para caber os botões
 
+# --- NOVO: SELEÇÃO DE IMPRESSORA NO TOPO ---
+frame_impressora = ctk.CTkFrame(window)
+frame_impressora.pack(pady=10, padx=20, fill="x")
+
+label_impressora = ctk.CTkLabel(frame_impressora, text="Impressora:", font=ctk.CTkFont(weight="bold"))
+label_impressora.pack(side="left", padx=10, pady=5)
+
+# Busca a lista de impressoras disponíveis usando o backend
+lista_impressoras = banco_dados.listar_impressoras()
+
+menu_impressora = ctk.CTkOptionMenu(frame_impressora, values=lista_impressoras, width=200)
+menu_impressora.pack(side="left", padx=10, pady=5)
+
+# Tenta definir a impressora padrão do sistema na caixinha de seleção
+try:
+    import win32print
+    menu_impressora.set(win32print.GetDefaultPrinter())
+except:
+    pass
+
+# Divisor visual simples
+divisor = ctk.CTkLabel(window, text="-" * 50, text_color="gray")
+divisor.pack(pady=5)
+
 # Label Principal
 text = ctk.CTkLabel(window, text="Preencha os dados da OP abaixo:")
 text.pack(pady=10)
@@ -82,8 +106,8 @@ botao_csv.pack(pady=10)
 botao_pdf = ctk.CTkButton(master=window, text="Apenas Salvar PDF", command=action_save_pdf)
 botao_pdf.pack(pady=5)
 
-# Botão de impressão agora ativado!
-botao_imprimir = ctk.CTkButton(master=window, text="Salvar e Imprimir (Windows)", command=action_imprimir, fg_color="green", hover_color="darkgreen")
+# Botão de impressão agora dinâmico!
+botao_imprimir = ctk.CTkButton(master=window, text="Salvar e Imprimir", command=action_imprimir, fg_color="green", hover_color="darkgreen")
 botao_imprimir.pack(pady=15)
 
 window.mainloop()
