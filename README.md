@@ -78,10 +78,4 @@ python archivementMain/main.py
 
 ---
 
-## 🤝 Como Contribuir
-
-1. Faça um **Fork** do projeto.
-2. Crie uma nova Branch para sua funcionalidade (`git checkout -b feature/NovaFuncionalidade`).
-3. Faça o **Commit** de suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Envie para a Branch original (`git push origin feature/NovaFuncionalidade`).
-5. Abra um **Pull Request**.
+## Trabalhando pastas e subpastas
